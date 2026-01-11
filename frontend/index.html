@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的AI学习助手</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-robot"></i> 智能学习助手</h1>
+            <p class="subtitle">一个由 FastAPI + 百度千帆大模型驱动的 AI 应用</p>
+            <p class="server-status">服务器状态: <span id="statusIndicator"><i class="fas fa-circle-notch fa-spin"></i> 检测中...</span></p>
+        </header>
+
+        <main>
+            <section class="input-section">
+                <div class="input-group">
+                    <input type="text" id="questionInput" placeholder="咳咳~羊同学有没有想问的问题">
+                    <button id="askButton" class="primary-btn">
+                        <i class="fas fa-paper-plane"></i> 发送提问
+                    </button>
+                </div>
+                <p class="hint"><i class="fas fa-lightbulb"></i> 提示：可以询问技术概念、学习建议或任何你想知道的内容。</p>
+            </section>
+
+            <section class="response-section">
+                <h2><i class="fas fa-comment-dots"></i> AI 回答</h2>
+                <div class="response-card">
+                    <div class="question-display">
+                        <strong>你的问题：</strong> <span id="displayQuestion">-</span>
+                    </div>
+                    <div class="answer-display">
+                        <strong>AI 回答：</strong> <span id="displayAnswer">等待你的提问...</span>
+                    </div>
+                    <div class="loading" id="loadingIndicator">
+                        <i class="fas fa-spinner fa-spin"></i> AI 正在思考中，请稍候...
+                    </div>
+                </div>
+            </section>
+
+            <section class="api-test-section">
+                <h2><i class="fas fa-network-wired"></i> 服务接口测试</h2>
+                <div class="endpoint-list">
+                    <div class="endpoint">
+                        <code>GET /</code> <span class="endpoint-desc">- 健康检查</span>
+                        <button class="test-btn" onclick="testEndpoint('/')">测试</button>
+                    </div>
+                    <div class="endpoint">
+                        <code>GET /chat?q=你好</code> <span class="endpoint-desc">- 默认问候</span>
+                        <button class="test-btn" onclick="testEndpoint('/chat?q=你好')">测试</button>
+                    </div>
+                    <div class="endpoint">
+                        <code>GET /chat?q=什么是机器学习</code> <span class="endpoint-desc">- 技术提问</span>
+                        <button class="test-btn" onclick="testEndpoint('/chat?q=什么是机器学习')">测试</button>
+                    </div>
+                </div>
+                <div class="test-result">
+                    <h3><i class="fas fa-code"></i> 原始 API 响应：</h3>
+                    <pre id="apiResult">点击上方按钮查看接口返回的原始 JSON 数据。</pre>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>技术栈：FastAPI · 百度千帆大模型 · 原生前端 · Ubuntu 服务器 | 项目已部署至公网 | <a href="#" onclick="checkServerStatus()">点击刷新状态</a></p>
+            <p class="copyright">© 2025 我的AI学习助手项目 - 一个完整的全栈应用实践</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
