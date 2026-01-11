@@ -1,0 +1,26 @@
+name: Build Docker Image
+
+on:
+  workflow_dispatch:  # 允许手动触发
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+    
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+      
+    - name: Build Docker image
+      run: |
+        docker build -t my-ai-assistant:latest .
+        docker save -o my-ai-assistant.tar my-ai-assistant:latest
+    
+    - name: Upload Docker image
+      uses: actions/upload-artifact@v3
+      with:
+        name: ai-assistant-image
+        path: my-ai-assistant.tar
