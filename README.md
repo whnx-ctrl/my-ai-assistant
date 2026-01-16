@@ -16,6 +16,7 @@
 
 
 🚀 快速开始
+
 方式一：使用预构建Docker镜像（推荐）
 bash
 # 1. 从Release下载镜像
@@ -27,10 +28,6 @@ docker load < my-ai-assistant.tar
 
 # 3. 运行容器
 docker run -d -p 8000:8000 --name ai-assistant my-ai-assistant:latest
-
-# 4. 访问服务
-# 前端页面：http://localhost:8000
-# 健康检查：http://localhost:8000/health
 
 方式二：从源码构建
 bash
@@ -241,7 +238,7 @@ docker restart ai-assistant       # 重启后端服务
 版本控制：使用Git进行代码管理和协作
 
 量化成果
-在线服务：http://175.178.109.106:8000/ (公网可访问)
+在线服务：http://175.178.109.106 (公网可访问)
 
 响应时间：简单问题<3秒，支持动态超时控制
 
